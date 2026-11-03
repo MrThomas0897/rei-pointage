@@ -685,7 +685,7 @@ async function buildPdf(){
   ["Salarié","RC 1","RC 2","RA / Direction"].forEach((h,i)=>{const x=L+i*vw;if(i)g.line(x,y,x,y+32);g.text(h,x+vw/2,y+5,"center");
     g.size(8);g.text("Nom : "+(i===0?(profil.nom||""):""),x+1.5,y+11);g.text("Visa :",x+1.5,y+17);g.size(9)});
   if(cur.sig){try{const s=await pdf.embedPng(cur.sig);page.drawImage(s,{x:P(L+10),y:Y(y+30.5),width:P(vw-12),height:P(14)})}catch(e){}}
-  g.size(6.5);g.text("Fiche générée depuis l'application Pointage REI le "+new Date().toLocaleDateString("fr-FR"),L,290,"",true);
+  g.size(6.5);g.text("le "+new Date().toLocaleDateString("fr-FR"),L,290,"",true);
   return new Blob([await pdf.save()],{type:"application/pdf"});
 }
 
