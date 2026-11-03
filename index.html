@@ -692,7 +692,7 @@ async function buildPdf(){
 /* ---------- Démarrage ---------- */
 (async function boot(){
   const p=LS.get("profil");if(p)profil=Object.assign(profil,p);
-  setSync(LS.ok()?"Enregistrement automatique sur ce téléphone":"Attention : ce navigateur n'autorise pas l'enregistrement (navigation privée ?). Vos saisies seront perdues à la fermeture.");
+  setSync(LS.ok()?"":"Attention : ce navigateur n'autorise pas l'enregistrement (navigation privée ?). Vos saisies seront perdues à la fermeture.");
   try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
   await loadWeek(t0.y,t0.w);
   loadTpl().catch(()=>{});
