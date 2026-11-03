@@ -480,7 +480,8 @@ function download(file){
 async function sendFile(blob,name,msgEl){
   const ext=name.split(".").pop();
   const file=new File([blob],name,{type:MIME[ext]||"application/octet-stream"});
-  const canShare=navigator.canShare&&navigator.canShare({files:[file]});
+  const isMobile =/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const canShare =isMobile&&navigator.canShare&&navigator.canShare({files:[file]});
   const ok=t=>{msgEl.innerHTML=`<div class="msg">${t}</div>`};
   if(canShare){
     try{await navigator.share({files:[file],title:name});ok("Fichier transmis au menu de partage.");return}
